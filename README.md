@@ -1,3 +1,4 @@
 # DevAndroid
-New project - update 25/04/2022
-- fix navigation bottom bar
+New project - update 26/04/2022
+- reup sign in and sign up GUI
+- 
