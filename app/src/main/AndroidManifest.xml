@@ -18,6 +18,9 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
+        <activity
+            android:name=".ProductActivity"
+            android:exported="false" />
 
         <activity
             android:name=".LoginActivity"
