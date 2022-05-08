@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton btnProduct ;
-    private ImageButton btnCreateOrder ;
+    private ImageButton btnStatictic ;
     private ImageButton btnOrder ;
     private ImageButton btnStorage ;
 
@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnProduct = findViewById(R.id.btn_product);
+        btnOrder = findViewById(R.id.btn_order);
+        btnStorage = findViewById(R.id.btn_storage);
+        btnStatictic = findViewById(R.id.btn_statictic);
+
 
         btnProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,5 +29,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),ProductActivity.class));
             }
         });
+
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),OrderActivity.class));
+            }
+        });
+
+
+
+
     }
 }
