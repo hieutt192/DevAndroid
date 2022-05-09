@@ -3,9 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/drawable/rounded_corner.xml" value="0.1" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_confirm.xml" value="0.25" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_list_item.xml" value="0.25" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_list_item_confirm.xml" value="0.25" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_listitem_nhap_xuat.xml" value="0.17980072463768115" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_listitem_nhap_xuat_confirm.xml" value="0.25" />
         <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_nhap_hang.xml" value="0.264" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_order.xml" value="0.25" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_product.xml" value="0.25" />
         <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_them_moi.xml" value="0.25" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/activity_xuat_hang.xml" value="0.17980072463768115" />
+        <entry key="..\:/Code/DevAndroid/app/src/main/res/layout/item_product.xml" value="0.25" />
         <entry key="..\:/android/DevAndroid/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
         <entry key="..\:/android/test26_04/app/src/main/res/layout/activity_login.xml" value="0.1287037037037037" />
         <entry key="..\:/android/test26_04/app/src/main/res/layout/activity_main.xml" value="0.1" />

@@ -22,6 +22,41 @@
             android:name=".ProductActivity"
             android:exported="false" />
 
+        <activity android:name=".OrderActivity"
+            android:exported="false"
+            />
+        <activity android:name=".them_moi"
+            android:exported="false"
+            />
+
+        <activity android:name=".StorageActivity"
+            android:exported="false"
+            />
+
+        <activity android:name=".nhap_hang"
+            android:exported="false"
+            />
+
+        <activity android:name=".confirm"
+            android:exported="false"
+            />
+
+        <activity android:name=".listitem_nhap_hang"
+            android:exported="false"
+            />
+
+        <activity android:name=".listitem_nhap_xuat_confirm"
+            android:exported="false"
+            />
+
+        <activity android:name=".tao_don_nhap"
+            android:exported="false"
+            />
+
+        <activity android:name=".tao_don_xuat_hang"
+            android:exported="false"
+            />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
