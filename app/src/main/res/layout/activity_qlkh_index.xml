@@ -35,7 +35,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shop ban hang ABC"
+            android:text="AE Shop"
             android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -64,7 +64,7 @@
             android:inputType="textPersonName"
             android:shadowColor="#AE8383"
 
-            android:text="Tìm kiếm san pham"
+            android:hint="Tim kiem san pham..."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -116,11 +116,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
-        <ListView
-            android:id="@+id/lvIndexNX"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_item_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/activity_listitem_nhap_xuat_confirm" />
+            android:layout_height="wrap_content"
+            />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
