@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnOrder ;
     private ImageButton btnStorage ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         btnProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ProductActivity.class));
+
+                callGetAllProductsAPI();
+
             }
         });
 
@@ -45,13 +48,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),OrderActivity.class));
+
             }
         });
 
         btnStorage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callGetAllProductsAPI();
+//                callGetAllProductsAPI();
             }
         });
     }
@@ -62,11 +66,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
                 ArrayList<Product> res = response.body();
-
-
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, StorageActivity.class);
-
+                intent.setClass(MainActivity.this, ProductActivity.class);
                 intent.putExtra("Product list", res);
                 startActivity(intent);
             }
