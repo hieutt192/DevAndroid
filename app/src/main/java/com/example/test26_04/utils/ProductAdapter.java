@@ -26,11 +26,13 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHoler>{
     private List<Product> mListProduct;
     private Context mContext;
+    private Class onClickItemDestination;
 
-    public ProductAdapter(Context context, List<Product> mListProduct) {
+    public ProductAdapter(Context context, List<Product> mListProduct, Class onClickItemDestination) {
 
         this.mListProduct = mListProduct;
         this.mContext = context;
+        this.onClickItemDestination = onClickItemDestination;
 
     }
 
@@ -61,7 +63,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         });
     }
     private void onClickGotoDetail(Product product){
-        Intent intent = new Intent(mContext, Detail_Product_Activity.class);
+        Intent intent = new Intent(mContext, onClickItemDestination);
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("Object Product",product);

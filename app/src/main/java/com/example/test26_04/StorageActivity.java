@@ -20,6 +20,7 @@ import com.example.test26_04.models.AllProductResponse;
 import com.example.test26_04.models.Item;
 import com.example.test26_04.models.Product;
 import com.example.test26_04.utils.CustomeAdapter;
+import com.example.test26_04.utils.ProductAdapter;
 
 import java.util.ArrayList;
 
@@ -39,19 +40,18 @@ public class StorageActivity extends AppCompatActivity {
         btnNhap = (Button)findViewById(R.id.btnNhap);
         btnXuat=(Button)findViewById(R.id.btnXuat);
 
-        Intent intent = getIntent();
-        productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
-
-        System.out.println(productList.size());
-
         RecyclerView productListView = (RecyclerView) findViewById(R.id.recycle_item_list);
-        productListView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        productListView.setLayoutManager(linearLayoutManager);
 
-        RecyclerView.ItemDecoration itemDeco = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        productListView.addItemDecoration(itemDeco);
+        RecyclerView.ItemDecoration itemDecoration= new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        productListView.addItemDecoration(itemDecoration);
 
-        CustomeAdapter adapter = new CustomeAdapter(this, productList);
-        productListView.setAdapter(adapter);
+        Intent intent = getIntent();
+        ArrayList<Product> productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
+
+        ProductAdapter productAdapter = new ProductAdapter(this, productList, nhap_hang.class);
+        productListView.setAdapter(productAdapter);
 
 
         btnNhap.setOnClickListener(new View.OnClickListener() {

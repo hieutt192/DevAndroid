@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btnProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                callGetAllProductsAPI();
-
+                callGetAllProductsAPI(ProductActivity.class);
             }
         });
 
@@ -55,19 +53,19 @@ public class MainActivity extends AppCompatActivity {
         btnStorage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                callGetAllProductsAPI();
+                callGetAllProductsAPI(StorageActivity.class);
             }
         });
     }
 
-    private void callGetAllProductsAPI(){
+    private void callGetAllProductsAPI(Class destination){
         productAPI.apiService.getAllProducts().enqueue(new Callback<ArrayList<Product>>() {
 
             @Override
             public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
                 ArrayList<Product> res = response.body();
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, ProductActivity.class);
+                intent.setClass(MainActivity.this, destination);
                 intent.putExtra("Product list", res);
                 startActivity(intent);
             }

@@ -39,8 +39,8 @@ public class ProductActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         ArrayList<Product> productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
-        System.out.println(productList.size());
-        productAdapter = new ProductAdapter(this, productList);
+
+        productAdapter = new ProductAdapter(this, productList, Detail_Product_Activity.class);
         rcvData.setAdapter(productAdapter);
     }
 
