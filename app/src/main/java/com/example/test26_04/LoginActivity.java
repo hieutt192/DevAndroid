@@ -2,14 +2,13 @@ package com.example.test26_04;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.test26_04.api_controller.loginController;
+import com.example.test26_04.api_controller.loginAPI;
 import com.example.test26_04.models.LoginBody;
 import com.example.test26_04.models.User;
 import com.google.android.material.button.MaterialButton;
@@ -61,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void callLoginApi(String username, String password){
         User user = new User(username, password);
-        loginController.apiService.login(user).enqueue(new Callback<LoginBody>() {
+        loginAPI.apiService.login(user).enqueue(new Callback<LoginBody>() {
             @Override
             public void onResponse(Call<LoginBody> call, Response<LoginBody> response) {
                 LoginBody res = response.body();

@@ -2,6 +2,9 @@ package com.example.test26_04.utils;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,22 +15,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.test26_04.R;
 import com.example.test26_04.models.Item;
+import com.example.test26_04.models.Product;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.ViewHolder> {
 
-    private ArrayList<Item> localDataSet;
-    private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    private ArrayList<Product> localDataSet;
+    private Context context;
 
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder  {
         private  TextView  itemNameView;
         private  TextView  itemPriceView;
         private  TextView  itemQuantityView;
@@ -41,7 +44,6 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.ViewHold
             itemPriceView = (TextView) view.findViewById(R.id.itemPrice);
             itemQuantityView = (TextView) view.findViewById(R.id.itemQuantity);
             itemImageView = (ImageView) view.findViewById(R.id.profile_pic);
-            view.setOnClickListener(this);
         }
 
         public TextView getItemNameView() {
@@ -59,11 +61,6 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.ViewHold
         public ImageView getItemImageView(){
             return itemImageView;
         }
-
-        @Override
-        public void onClick(View view) {
-//            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
     }
 
     /**
@@ -73,7 +70,7 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.ViewHold
      * by RecyclerView.
      */
     public CustomeAdapter(Context context, ArrayList dataSet) {
-        this.mInflater = LayoutInflater.from(context);
+        this.context = context;
         localDataSet = dataSet;
     }
 
@@ -91,14 +88,15 @@ public class CustomeAdapter extends RecyclerView.Adapter<CustomeAdapter.ViewHold
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+
         viewHolder.getItemNameView().setText(localDataSet.get(position).getName());
         viewHolder.getItemPriceView().setText(String.valueOf(localDataSet.get(position).getPrice()));
-        viewHolder.getItemQuantityView().setText(String.valueOf(localDataSet.get(position).getQuantity()));
-        viewHolder.getItemImageView().setImageResource(R.drawable.img_item);
+        viewHolder.getItemQuantityView().setText(String.valueOf(localDataSet.get(position).getStock()));
+        Glide.with(context).load(localDataSet.get(position).getImage()).into(viewHolder.getItemImageView());
 
     }
 

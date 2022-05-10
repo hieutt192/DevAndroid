@@ -8,11 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.test26_04.api_controller.loginController;
+import com.example.test26_04.api_controller.loginAPI;
 import com.example.test26_04.models.User;
 import com.google.android.material.button.MaterialButton;
-
-import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -62,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void callSignUpApi(User user){
-        loginController.apiService.signup(user).enqueue(new Callback<String>() {
+        loginAPI.apiService.signup(user).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String msg = response.body();
