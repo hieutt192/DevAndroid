@@ -57,6 +57,13 @@
             android:exported="false"
             />
 
+        <activity android:name=".list_item_index"
+            android:exported="false"
+            />
+        <activity android:name=".ListDetail"
+            android:exported="false"
+            />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">

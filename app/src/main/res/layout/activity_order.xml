@@ -38,7 +38,7 @@
             android:layout_width="56dp"
             android:layout_height="48dp"
             android:background="@color/background_title"
-            android:contentDescription="abc"
+            android:contentDescription="@string/previous"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.01"
@@ -131,6 +131,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/activity_list_item_index"
+                />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -140,7 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:clickable="true"
-        android:contentDescription="abc"
+        android:contentDescription="@string/action_settings"
         app:backgroundTint="@color/background_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
