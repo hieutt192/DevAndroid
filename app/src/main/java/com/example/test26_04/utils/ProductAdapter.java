@@ -3,6 +3,7 @@ package com.example.test26_04.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +97,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public ProductViewHoler(@NonNull View itemView) {
             super(itemView);
             layoutItem = itemView.findViewById(R.id.layout_item);
-
             imgProduct = itemView.findViewById(R.id.image_product);
             tvName = itemView.findViewById(R.id.tv_nameOP);
             tvPrice = itemView.findViewById(R.id.tv_price);
