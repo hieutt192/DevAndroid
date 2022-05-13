@@ -46,22 +46,17 @@ public class ProductActivity extends AppCompatActivity {
         productAdapter = new ProductAdapter(this, productList, Detail_Product_Activity.class);
         rcvData.setAdapter(productAdapter);
 
-        btnAddP = findViewById(R.id.btnAddnew);
+        btnAddP = findViewById(R.id.btnAddNewProduct);
         btnAddP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Add_ProductActivity.class));
+                Intent intent = new Intent(ProductActivity.this, Add_ProductActivity.class);
+                startActivity(intent);
             }
         });
 
     }
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (productAdapter != null) {
-            productAdapter.release();
-        }
-    }
+
 }
