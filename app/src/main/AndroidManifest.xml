@@ -38,10 +38,6 @@
             android:exported="false"
             />
 
-        <activity android:name=".nhap_hang"
-            android:exported="false"
-            />
-
         <activity android:name=".confirm"
             android:exported="false"
             />

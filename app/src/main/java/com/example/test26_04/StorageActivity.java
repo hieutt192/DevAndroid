@@ -9,12 +9,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.test26_04.api_controller.productAPI;
 import com.example.test26_04.models.Product;
 import com.example.test26_04.utils.ProductAdapter;
 import com.example.test26_04.utils.StorageAdapter;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StorageActivity extends AppCompatActivity {
     Button btnNhap;
@@ -37,10 +43,9 @@ public class StorageActivity extends AppCompatActivity {
         ArrayList<Product> productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
         System.out.println(productList.size());
 
-        StorageAdapter adapter = new StorageAdapter(this, productList);
+        StorageAdapter adapter = new StorageAdapter(this, productList, tao_don_nhap.class);
         productListView.setAdapter(adapter);
 
     }
-
 
 }

@@ -23,11 +23,12 @@ import java.util.List;
 public class StorageAdapter  extends RecyclerView.Adapter<StorageAdapter.StorageViewHoler> {
     private List<Product> mListProduct;
     private Context mContext;
-//    private Class onClickItemDestination;
+    private Class onClickItemDestination;
 
-    public StorageAdapter(Context context, List<Product> mListProduct) {
+    public StorageAdapter(Context context, List<Product> mListProduct, Class onClickDestination) {
         this.mListProduct = mListProduct;
         this.mContext = context;
+        this.onClickItemDestination = onClickDestination;
     }
 
     @NonNull
@@ -50,6 +51,17 @@ public class StorageAdapter  extends RecyclerView.Adapter<StorageAdapter.Storage
         holder.tvName.setText(product.getName());
         holder.tvPrice.setText(String.valueOf(product.getPrice()));
         holder.tvStock.setText(String.valueOf(product.getStock()));
+
+        holder.importBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, onClickItemDestination);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("importing product",product);
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 

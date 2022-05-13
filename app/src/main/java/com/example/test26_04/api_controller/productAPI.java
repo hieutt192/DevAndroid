@@ -1,6 +1,6 @@
 package com.example.test26_04.api_controller;
 
-import com.example.test26_04.models.AllProductResponse;
+import com.example.test26_04.models.ImportingProduct;
 import com.example.test26_04.models.Product;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface productAPI {
 
@@ -29,5 +31,7 @@ public interface productAPI {
     @GET("all-products")
     Call<ArrayList<Product>> getAllProducts();
 
+    @POST("import-product")
+    Call<Product> postImportProduct(@Body ImportingProduct product);
 
 }
