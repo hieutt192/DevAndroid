@@ -2,6 +2,7 @@ package com.example.test26_04;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.test26_04.utils.ProductAdapter;
 import com.example.test26_04.R;
 import com.example.test26_04.models.Product;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class ProductActivity extends AppCompatActivity {
 
     private RecyclerView rcvData;
     private ProductAdapter productAdapter;
+    private FloatingActionButton btnAddP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,15 @@ public class ProductActivity extends AppCompatActivity {
 
         productAdapter = new ProductAdapter(this, productList, Detail_Product_Activity.class);
         rcvData.setAdapter(productAdapter);
+
+        btnAddP = findViewById(R.id.btnAddnew);
+        btnAddP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Add_ProductActivity.class));
+            }
+        });
+
     }
 
 
