@@ -33,6 +33,7 @@ import com.example.test26_04.utils.RealPathUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -51,6 +52,7 @@ public class Add_ProductActivity extends AppCompatActivity {
     private EditText txtInputImportPrice;
     private Button btnClear;
     private Button btnAdd;
+    private ArrayList<Product> updatedProductList;
     private Uri mUri;
     private ImageView imageInput;
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
@@ -199,6 +201,27 @@ public class Add_ProductActivity extends AppCompatActivity {
             }
 
         }
-
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        productAPI.apiService.getAllProducts()
+                .enqueue(new Callback<ArrayList<Product>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
+                        updatedProductList = response.body();
+                        Intent intent = new Intent(Add_ProductActivity.this, ProductActivity.class);
+                        intent.putExtra("Product list", updatedProductList);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
+
+                    }
+                });
+    }
+
 }

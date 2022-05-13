@@ -14,6 +14,8 @@ import com.example.test26_04.api_controller.productAPI;
 import com.example.test26_04.models.ImportingProduct;
 import com.example.test26_04.models.Product;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,6 +24,7 @@ import retrofit2.http.Body;
 public class tao_don_nhap extends AppCompatActivity {
     Button btnFinish;
     int importingNumber;
+    private ArrayList<Product> updatedProductList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,5 +93,25 @@ public class tao_don_nhap extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        productAPI.apiService.getAllProducts()
+                .enqueue(new Callback<ArrayList<Product>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
+                        updatedProductList = response.body();
+                        Intent intent = new Intent(tao_don_nhap.this, StorageActivity.class);
+                        intent.putExtra("Product list", updatedProductList);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
+
+                    }
+                });
     }
 }

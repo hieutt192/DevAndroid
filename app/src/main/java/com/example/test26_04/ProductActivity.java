@@ -2,6 +2,7 @@ package com.example.test26_04;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test26_04.api_controller.productAPI;
 import com.example.test26_04.utils.ProductAdapter;
 import com.example.test26_04.R;
 import com.example.test26_04.models.Product;
@@ -20,12 +22,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class ProductActivity extends AppCompatActivity {
 
     private RecyclerView rcvData;
     private ProductAdapter productAdapter;
     private FloatingActionButton btnAddP;
+    private ArrayList<Product> productList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +49,7 @@ public class ProductActivity extends AppCompatActivity {
         rcvData.addItemDecoration(itemDecoration);
 
         Intent intent = getIntent();
-        ArrayList<Product> productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
+        productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
 
         productAdapter = new ProductAdapter(this, productList, Detail_Product_Activity.class);
         rcvData.setAdapter(productAdapter);
@@ -57,6 +65,19 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ProductActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 
 
 }

@@ -40,7 +40,7 @@ public class StorageActivity extends AppCompatActivity {
         productListView.addItemDecoration(itemDecoration);
 
         Intent intent = getIntent();
-        ArrayList<Product> productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
+        productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
         System.out.println(productList.size());
 
         StorageAdapter adapter = new StorageAdapter(this, productList, tao_don_nhap.class);
@@ -48,4 +48,18 @@ public class StorageActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = getIntent();
+        productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(StorageActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }
