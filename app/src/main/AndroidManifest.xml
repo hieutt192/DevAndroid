@@ -38,6 +38,10 @@
             android:exported="false"
             />
 
+        <activity android:name=".StatisticActivity"
+            android:exported="false"
+            />
+
         <activity android:name=".nhap_hang"
             android:exported="false"
             />
