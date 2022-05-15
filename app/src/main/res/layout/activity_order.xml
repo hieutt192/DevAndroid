@@ -61,10 +61,6 @@
         app:tabIndicatorColor="@color/background_title"
         app:tabSelectedTextColor="@color/black">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Tất cả" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

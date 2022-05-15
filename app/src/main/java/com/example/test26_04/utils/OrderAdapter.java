@@ -15,12 +15,12 @@ import com.example.test26_04.models.Order;
 
 import java.util.List;
 
-public class orderAdapter extends RecyclerView.Adapter<orderAdapter.ordViewHolder>{
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ordViewHolder>{
     private List<Order> listOrd;
     private Context mContext;
     private Class onClickItemDestination;
 
-    public orderAdapter(Context context, List<Order> listOrd, Class onClickItemDestination) {
+    public OrderAdapter(Context context, List<Order> listOrd, Class onClickItemDestination) {
 
         this.listOrd = listOrd;
         this.mContext = context;
