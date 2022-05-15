@@ -3,6 +3,7 @@
     package="com.example.test26_04">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -65,10 +66,13 @@
         <activity android:name=".tao_don_xuat_hang"
             android:exported="false"
             />
+        <activity android:name=".Add_ProductActivity"
+            android:exported="false"/>
 
         <activity
             android:name=".LoginActivity"
             android:exported="true">
+
 
 
             <intent-filter>

@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.213" >
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/listview"
@@ -195,7 +195,7 @@
         app:layout_constraintVertical_bias="0.887" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/txtTongTien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
