@@ -49,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnStorage.setOnClickListener(new View.OnClickListener() {
+        btnStatictic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),StatisticActivity.class));
                 callGetAllProductsAPI(StorageActivity.class);
             }
         });
