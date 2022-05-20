@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.test26_04.api_controller.orderAPI;
 import com.example.test26_04.api_controller.productAPI;
+import com.example.test26_04.models.Order;
 import com.example.test26_04.models.Product;
 
 import java.util.ArrayList;
@@ -44,18 +47,72 @@ public class MainActivity extends AppCompatActivity {
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),OrderActivity.class));
-
+                callGetPendingOrdersAPI();
             }
         });
 
-        btnStatictic.setOnClickListener(new View.OnClickListener() {
+        btnStorage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),StatisticActivity.class));
                 callGetAllProductsAPI(StorageActivity.class);
             }
         });
+    }
+
+    private void callGetPendingOrdersAPI(){
+        Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+
+        orderAPI.apiService
+                .getPendingOrders()
+                .enqueue(new Callback<ArrayList<Order>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Order>> call, Response<ArrayList<Order>> response) {
+                        ArrayList<Order> pendingOrders = response.body();
+                        intent.putExtra("pendingOrders", pendingOrders);
+
+                        orderAPI.apiService
+                                .getConfirmedOrders()
+                                .enqueue(new Callback<ArrayList<Order>>() {
+                                    @Override
+                                    public void onResponse(Call<ArrayList<Order>> call, Response<ArrayList<Order>> response) {
+                                        ArrayList<Order> confirmedOrders = response.body();
+                                        intent.putExtra("confirmedOrders", confirmedOrders);
+
+                                        orderAPI.apiService
+                                                .getCancelledOrders()
+                                                .enqueue(new Callback<ArrayList<Order>>() {
+                                                    @Override
+                                                    public void onResponse(Call<ArrayList<Order>> call, Response<ArrayList<Order>> response) {
+                                                        ArrayList<Order> cancelledOrders = response.body();
+                                                        intent.putExtra("cancelledOrders", cancelledOrders);
+                                                        startActivity(intent);
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<ArrayList<Order>> call, Throwable t) {
+
+                                                    }
+                                                });
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ArrayList<Order>> call, Throwable t) {
+
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Order>> call, Throwable t) {
+
+                    }
+                });
+
+
+
+
+
+
     }
 
     private void callGetAllProductsAPI(Class destination){

@@ -52,4 +52,6 @@ public interface productAPI {
     @DELETE("delete-product")
     Call<String> deleteProduct(@Query("id") String id);
 
+
+
 }

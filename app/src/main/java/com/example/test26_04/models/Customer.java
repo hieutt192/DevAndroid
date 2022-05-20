@@ -1,6 +1,8 @@
 package com.example.test26_04.models;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
     String name,address,phoneNumber;
 
     public Customer(String name, String address, String phoneNumber) {

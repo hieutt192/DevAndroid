@@ -24,7 +24,7 @@
             android:layout_width="234dp"
             android:layout_height="34dp"
             android:gravity="center"
-            android:text="Xac nhan don hang"
+            android:text="Confirm order"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -52,8 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
-        android:text="Thong tin san pham"
+        android:text="Buying product list"
         android:textSize="17dp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,57 +75,52 @@
         app:layout_constraintVertical_bias="0.213" >
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_buying_product_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/listview"
-            tools:listitem="@layout/activity_list_item_confirm"
-            />
+            tools:listitem="@layout/activity_list_item_confirm" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thong tin khach hang"
-        android:textSize="17dp"
+        android:layout_marginTop="16dp"
+        android:text="Customer information"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="17dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_customer_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:text="Ten"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        android:text="Name"
+        app:layout_constraintEnd_toStartOf="@+id/et_customer_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tv_customer_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="111dp"
-        android:text="Dia chi"
+        android:text="Address"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintHorizontal_bias="0.213"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toStartOf="@+id/et_customer_address"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="@+id/tv_customer_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_customer_name"
+        app:layout_constraintVertical_bias="0.136" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_customer_name"
         android:layout_width="278dp"
         android:layout_height="38dp"
         android:layout_marginTop="49dp"
@@ -139,86 +135,82 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/et_customer_address"
         android:layout_width="279dp"
         android:layout_height="40dp"
-        android:layout_marginTop="94dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintTop_toBottomOf="@+id/et_customer_name"
+        app:layout_constraintVertical_bias="0.059" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/et_customer_phone"
         android:layout_width="279dp"
         android:layout_height="35dp"
-        android:layout_marginTop="148dp"
         android:ems="10"
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.871"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/et_customer_address"
+        app:layout_constraintVertical_bias="0.054" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tv_customer_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="154dp"
-        android:text="So dien thoai"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextPhone"
-        app:layout_constraintHorizontal_bias="0.262"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginTop="28dp"
+        android:text="Phone"
+        app:layout_constraintEnd_toStartOf="@+id/et_customer_phone"
+        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/tv_customer_address" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tong tien"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="36dp"
+        android:text="Total price"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_customer_phone_number" />
 
     <TextView
-        android:id="@+id/txtTongTien"
+        android:id="@+id/tv_total_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="TextView"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/et_customer_phone" />
 
     <Button
 
         android:id="@+id/btnFinish"
         android:layout_width="286dp"
         android:layout_height="40dp"
-        android:text="Xác nhận"
+        android:layout_marginTop="72dp"
+        android:text="Create order"
         app:backgroundTint="@color/background_title"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.632"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintTop_toBottomOf="@+id/et_customer_phone" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

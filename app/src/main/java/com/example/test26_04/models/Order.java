@@ -1,34 +1,44 @@
 package com.example.test26_04.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Order implements Serializable {
-    String maOrder, nameCus,status;
-    int quantity;
-    float total;
+    private ArrayList<ProductIdAndQuantity> buyingProductList;
+    private Customer customerInfo;
+    private String status;
+    private float totalPrice;
+    private String _id = "";
 
-    public Order(String maOrder, String nameCus, String status, int quantity, float total) {
-        this.maOrder = maOrder;
-        this.nameCus = nameCus;
+    public Order(ArrayList<ProductIdAndQuantity> buyingProductList, Customer customerInfo, String status, float totalPrice) {
+        this.buyingProductList = buyingProductList;
+        this.customerInfo = customerInfo;
         this.status = status;
-        this.quantity = quantity;
-        this.total = total;
+        this.totalPrice = totalPrice;
     }
 
-    public String getMaOrder() {
-        return maOrder;
+    public String get_id() {
+        return _id;
     }
 
-    public void setMaOrder(String maOrder) {
-        this.maOrder = maOrder;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
-    public String getNameCus() {
-        return nameCus;
+    public ArrayList<ProductIdAndQuantity> getBuyingProductList() {
+        return buyingProductList;
     }
 
-    public void setNameCus(String nameCus) {
-        this.nameCus = nameCus;
+    public void setBuyingProductList(ArrayList<ProductIdAndQuantity> buyingProductList) {
+        this.buyingProductList = buyingProductList;
+    }
+
+    public Customer getCustomerInfo() {
+        return customerInfo;
+    }
+
+    public void setCustomerInfo(Customer customerInfo) {
+        this.customerInfo = customerInfo;
     }
 
     public String getStatus() {
@@ -39,19 +49,11 @@ public class Order implements Serializable {
         this.status = status;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public float getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-    public void setTotal(float total) {
-        this.total = total;
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

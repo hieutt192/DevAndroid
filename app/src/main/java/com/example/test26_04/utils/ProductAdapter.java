@@ -70,8 +70,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         bundle.putSerializable("Object Product",product);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
-
-
     }
 
     public void release(){
@@ -100,7 +98,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             imgProduct = itemView.findViewById(R.id.image_product);
             tvName = itemView.findViewById(R.id.tv_nameOP);
             tvPrice = itemView.findViewById(R.id.tv_price);
-
 
         }
     }
