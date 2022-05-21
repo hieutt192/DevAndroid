@@ -52,7 +52,7 @@ public class Add_ProductActivity extends AppCompatActivity {
     private EditText txtInputImportPrice;
     private Button btnClear;
     private Button btnAdd;
-    private Product addedProduct;
+    private Product addedProduct = null;
     private SharedPreferences sp;
     private ArrayList<Product> updatedProductList;
     private Gson gson = new Gson();
@@ -90,7 +90,7 @@ public class Add_ProductActivity extends AppCompatActivity {
 
 
         //
-        sp = getSharedPreferences("added product", Context.MODE_PRIVATE);
+        sp = getSharedPreferences("product", Context.MODE_PRIVATE);
         txtInputName = findViewById(R.id.txt_input_Name_Product);
         txtInputPrice = findViewById(R.id.txt_input_Price_Product);
         txtInputCategory = findViewById(R.id.txt_category);
@@ -213,11 +213,14 @@ public class Add_ProductActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.e("ADD ACTIVITY", addedProduct.get_id());
         SharedPreferences.Editor editor = sp.edit();
-        String json = gson.toJson(addedProduct);
-        editor.putString("added product", json);
-        editor.commit();
+        if (addedProduct != null){
+            String json = gson.toJson(addedProduct);
+            editor.putString("added product", json);
+            editor.commit();
+            addedProduct = null;
+        }
+
     }
 
 }

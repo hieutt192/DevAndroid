@@ -37,7 +37,7 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        sp = getSharedPreferences("added product", Context.MODE_PRIVATE);
+        sp = getSharedPreferences("product", Context.MODE_PRIVATE);
         rcvData = findViewById(R.id.rcv_data);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -66,9 +66,19 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String json = sp.getString("added product", "");
-        Product addedProduct = gson.fromJson(json, Product.class);
-        Log.e("ADDED PRODUCT", json);
-        productAdapter.addProduct(addedProduct);
+        String json = sp.getString("added product", null);
+
+        if (json != null){
+            Product addedProduct = gson.fromJson(json, Product.class);
+            productAdapter.addProduct(addedProduct);
+        }
+
+        String _id = sp.getString("deleted product", null);
+        if (_id != null){
+            productAdapter.deleteProductById(_id);
+        }
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear().commit();
+
     }
 }

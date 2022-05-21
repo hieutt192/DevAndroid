@@ -2,7 +2,9 @@ package com.example.test26_04;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,13 +28,14 @@ public class Detail_Product_Activity extends AppCompatActivity {
 
     private Button deleteBtn;
     private ArrayList<Product> updatedProductList;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
         deleteBtn = findViewById(R.id.btn_delete);
-
+        sp = getSharedPreferences("product", Context.MODE_PRIVATE);
         Bundle bundle = getIntent().getExtras();
 
         if (bundle == null){
@@ -67,22 +70,10 @@ public class Detail_Product_Activity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         Toast.makeText(Detail_Product_Activity.this, response.body(), Toast.LENGTH_SHORT).show();
-                        productAPI.apiService
-                                .getAllProducts()
-                                .enqueue(new Callback<ArrayList<Product>>() {
-                                    @Override
-                                    public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
-                                        Intent intent = new Intent(Detail_Product_Activity.this, ProductActivity.class);
-                                        intent.putExtra("Product list",response.body());
-                                        startActivity(intent);
-
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
-
-                                    }
-                                });
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("deleted product", _id);
+                        editor.commit();
+                        onBackPressed();
                     }
 
                     @Override

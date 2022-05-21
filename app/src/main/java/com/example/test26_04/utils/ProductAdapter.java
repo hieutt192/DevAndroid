@@ -106,4 +106,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         mListProduct.add(product);
         notifyDataSetChanged();
     }
+
+    public void deleteProductById(String _id){
+        for(int i=0; i<mListProduct.size(); i++){
+            if(mListProduct.get(i).get_id().equals(_id)){
+                mListProduct.remove(i);
+                notifyItemRemoved(i);
+                notifyDataSetChanged();
+                break;
+            }
+        }
+    }
 }
