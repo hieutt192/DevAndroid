@@ -28,14 +28,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private List<Product> mListProduct;
     private Context mContext;
     private Class onClickItemDestination;
-    private ProductItemViewModel viewModel;
 
-    public ProductAdapter(Context context, List<Product> mListProduct, Class onClickItemDestination, ProductItemViewModel viewModel) {
+    public ProductAdapter(Context context, List<Product> mListProduct, Class onClickItemDestination) {
 
         this.mListProduct = mListProduct;
         this.mContext = context;
         this.onClickItemDestination = onClickItemDestination;
-        this.viewModel = viewModel;
 
     }
 

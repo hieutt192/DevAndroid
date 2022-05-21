@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,22 +14,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.test26_04.api_controller.productAPI;
-import com.example.test26_04.utils.OrderItemViewModel;
 import com.example.test26_04.utils.ProductAdapter;
-import com.example.test26_04.R;
 import com.example.test26_04.models.Product;
-import com.example.test26_04.utils.ProductItemViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class ProductActivity extends AppCompatActivity {
@@ -39,7 +29,6 @@ public class ProductActivity extends AppCompatActivity {
     private ProductAdapter productAdapter;
     private FloatingActionButton btnAddP;
     private ArrayList<Product> productList;
-    private ProductItemViewModel viewModel;
     private Gson gson = new Gson();
     private SharedPreferences sp;
 
@@ -50,7 +39,6 @@ public class ProductActivity extends AppCompatActivity {
 
         sp = getSharedPreferences("added product", Context.MODE_PRIVATE);
         rcvData = findViewById(R.id.rcv_data);
-        viewModel = new  ViewModelProvider(this).get(ProductItemViewModel.class);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvData.setLayoutManager(linearLayoutManager);
@@ -61,7 +49,7 @@ public class ProductActivity extends AppCompatActivity {
         Intent intent = getIntent();
         productList = (ArrayList<Product>) intent.getSerializableExtra("Product list");
 
-        productAdapter = new ProductAdapter(this, productList, Detail_Product_Activity.class, viewModel);
+        productAdapter = new ProductAdapter(this, productList, Detail_Product_Activity.class);
         rcvData.setAdapter(productAdapter);
 
         btnAddP = findViewById(R.id.btnAddNewProduct);
