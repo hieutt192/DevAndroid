@@ -28,12 +28,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private List<Product> mListProduct;
     private Context mContext;
     private Class onClickItemDestination;
+    private ProductItemViewModel viewModel;
 
-    public ProductAdapter(Context context, List<Product> mListProduct, Class onClickItemDestination) {
+    public ProductAdapter(Context context, List<Product> mListProduct, Class onClickItemDestination, ProductItemViewModel viewModel) {
 
         this.mListProduct = mListProduct;
         this.mContext = context;
         this.onClickItemDestination = onClickItemDestination;
+        this.viewModel = viewModel;
 
     }
 
@@ -100,5 +102,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             tvPrice = itemView.findViewById(R.id.tv_price);
 
         }
+    }
+
+    public void addProduct(Product product){
+        mListProduct.add(product);
+        notifyDataSetChanged();
     }
 }

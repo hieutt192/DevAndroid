@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/register"
     tools:context=".SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:layout_marginTop="150dp"
         android:orientation="vertical">
 
 <!--        <ImageView-->
@@ -24,111 +26,112 @@
 <!--            app:tint="@color/black" />-->
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Create account "
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/txtcreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Create new account "
-            android:textColor="@color/black"
-            android:textSize="10sp"/>
+            android:text="Username"
+            android:layout_marginRight="160dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/e_username"
             android:layout_below="@+id/txtcreate"
-            android:hint="Username"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:layout_margin="10dp"
-            android:padding="20dp"
-            android:background="@color/colorAccent"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:padding="15dp"
+            android:background="@drawable/input_field"
             android:drawableLeft="@drawable/ic_person"
-            android:drawablePadding="20dp"/>
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mật khẩu"
+            android:layout_marginRight="165dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/e_password"
+            android:inputType="textPassword"
             android:layout_below="@+id/e_username"
-            android:hint="Password"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:layout_margin="10dp"
-            android:padding="20dp"
-            android:background="@color/colorAccent"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:padding="15dp"
+            android:background="@drawable/input_field"
             android:drawableLeft="@drawable/ic_info"
-            android:drawablePadding="20dp"/>
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xác nhận mật khẩu"
+            android:layout_marginRight="130dp"
+            android:textStyle="bold" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/e_Confirm_password"
             android:layout_below="@+id/e_username"
-            android:hint="Confirm Password"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:layout_margin="10dp"
-            android:padding="20dp"
-            android:background="@color/colorAccent"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:padding="15dp"
+            android:background="@drawable/input_field"
             android:drawableLeft="@drawable/ic_info"
-            android:drawablePadding="20dp"/>
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginRight="175dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/e_mail"
             android:layout_below="@+id/e_password"
-            android:hint="E-Mail"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:layout_margin="10dp"
-            android:padding="20dp"
-            android:background="@color/colorAccent"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:padding="15dp"
+            android:background="@drawable/input_field"
             android:drawableLeft="@drawable/ic_email"
-            android:drawablePadding="20dp"/>
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên đầy đủ"
+            android:layout_marginRight="160dp"
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/e_fullname"
             android:layout_below="@+id/e_mail"
-            android:hint="Fullname"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:layout_margin="10dp"
-            android:padding="20dp"
-            android:background="@color/colorAccent"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:padding="15dp"
+            android:background="@drawable/input_field"
             android:drawableLeft="@drawable/ic_name"
-            android:drawablePadding="20dp"/>
+            android:drawablePadding="10dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btnSignup"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/e_fullname"
-            android:text="Create Account"
-            android:backgroundTint="@color/design_default_color_secondary"
             android:layout_centerHorizontal="true"
-            android:layout_margin="20dp"/>
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/background_title"
+            android:text="Create Account" />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnSignin"
-            android:layout_below="@+id/btnSignup"
-            android:text="Sign in"
-            android:backgroundTint="@color/design_default_color_secondary"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"/>
 
     </LinearLayout>
 

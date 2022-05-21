@@ -5,64 +5,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/login"
     tools:context=".LoginActivity">
-
-    <TextView
-        android:id="@+id/Signin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:text="Sign in"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_30sdp"
-        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Signin"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="310dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
+        android:background="@drawable/input_field"
         android:drawableLeft="@drawable/ic_person"
         android:drawablePadding="20dp"
         android:hint="Username"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/colorDivider" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
         android:layout_below="@+id/username"
-        android:hint="Password"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="20dp"
-        android:inputType="textPassword"
-        android:background="#30ffffff"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_field"
         android:drawableLeft="@drawable/ic_info"
-        android:drawablePadding="20dp"/>
+        android:drawablePadding="20dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/colorDivider" />
 
     <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/btnLogin"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/password"
-        android:text="Login"
-        android:backgroundTint="@color/design_default_color_secondary"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/background_title"
+        android:text="Login" />
 
     <TextView
         android:id="@+id/signUp"
@@ -74,16 +66,17 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Sign up, please click here !"
-        android:textColor="@color/white" />
+        android:text="Đăng kí tài khoản"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
 
     <TextView
+        android:id="@+id/others"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="or sign in with"
         android:layout_above="@+id/socialicons"
         android:layout_centerHorizontal="true"
-        android:id="@+id/others"/>
+        android:text="đăng nhập bằng" />
 
     <LinearLayout
         android:layout_width="match_parent"

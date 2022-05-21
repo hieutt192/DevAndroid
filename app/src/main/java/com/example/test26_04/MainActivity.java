@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.test26_04.api_controller.orderAPI;
 import com.example.test26_04.api_controller.productAPI;
 import com.example.test26_04.models.Order;
 import com.example.test26_04.models.Product;
+import com.example.test26_04.models.User;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnStatictic ;
     private ImageButton btnOrder ;
     private ImageButton btnStorage ;
+    private TextView tvFullName;
+    private ImageButton btnLogout;
 
 
     @Override
@@ -35,7 +39,21 @@ public class MainActivity extends AppCompatActivity {
         btnOrder = findViewById(R.id.btn_order);
         btnStorage = findViewById(R.id.btn_storage);
         btnStatictic = findViewById(R.id.btn_statictic);
+        tvFullName = findViewById(R.id.tv_main_username);
+        btnLogout = findViewById(R.id.imageButton_logout);
 
+        Intent intent = getIntent();
+        User user = (User)intent.getSerializableExtra("user");
+
+        tvFullName.setText(user.getFullName());
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnProduct.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -24,7 +24,6 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         MaterialButton btnSignup = (MaterialButton) findViewById(R.id.btnSignup);
-        MaterialButton btnSignin = (MaterialButton) findViewById(R.id.btnSignin);
         TextView usernameTv = (TextView) findViewById(R.id.e_username);
         TextView passwordTv = (TextView) findViewById(R.id.e_password);
         TextView rePasswordTv = (TextView) findViewById(R.id.e_Confirm_password);
@@ -32,12 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
         TextView fullNameTv = (TextView) findViewById(R.id.e_fullname);
 
         // click button sign in to back login UI
-        btnSignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-            }
-        });
+
 
         // click button Create account
         btnSignup.setOnClickListener(new View.OnClickListener() {

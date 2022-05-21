@@ -9,10 +9,14 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -29,7 +33,9 @@ import android.widget.Toast;
 import com.example.test26_04.R;
 import com.example.test26_04.api_controller.productAPI;
 import com.example.test26_04.models.Product;
+import com.example.test26_04.utils.ProductItemViewModel;
 import com.example.test26_04.utils.RealPathUtil;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +58,10 @@ public class Add_ProductActivity extends AppCompatActivity {
     private EditText txtInputImportPrice;
     private Button btnClear;
     private Button btnAdd;
+    private Product addedProduct;
+    private SharedPreferences sp;
     private ArrayList<Product> updatedProductList;
+    private Gson gson = new Gson();
     private Uri mUri;
     private ImageView imageInput;
     private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
@@ -85,7 +94,9 @@ public class Add_ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
+
         //
+        sp = getSharedPreferences("added product", Context.MODE_PRIVATE);
         txtInputName = findViewById(R.id.txt_input_Name_Product);
         txtInputPrice = findViewById(R.id.txt_input_Price_Product);
         txtInputCategory = findViewById(R.id.txt_category);
@@ -147,6 +158,7 @@ public class Add_ProductActivity extends AppCompatActivity {
                 .enqueue(new Callback<Product>() {
                     @Override
                     public void onResponse(Call<Product> call, Response<Product> response) {
+                        addedProduct = response.body();
                         Toast.makeText(Add_ProductActivity.this, "Successfully adding new product", Toast.LENGTH_SHORT).show();
                     }
 
@@ -207,21 +219,11 @@ public class Add_ProductActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        productAPI.apiService.getAllProducts()
-                .enqueue(new Callback<ArrayList<Product>>() {
-                    @Override
-                    public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
-                        updatedProductList = response.body();
-                        Intent intent = new Intent(Add_ProductActivity.this, ProductActivity.class);
-                        intent.putExtra("Product list", updatedProductList);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
-
-                    }
-                });
+        Log.e("ADD ACTIVITY", addedProduct.get_id());
+        SharedPreferences.Editor editor = sp.edit();
+        String json = gson.toJson(addedProduct);
+        editor.putString("added product", json);
+        editor.commit();
     }
 
 }

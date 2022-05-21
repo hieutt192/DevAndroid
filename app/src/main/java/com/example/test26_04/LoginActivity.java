@@ -2,6 +2,7 @@ package com.example.test26_04;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,9 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         su.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callLoginApi(us.getText().toString(), ps.getText().toString());
                 startActivity(new Intent(getApplicationContext(),SignUpActivity.class));
-
             }
         });
     }
@@ -68,7 +67,9 @@ public class LoginActivity extends AppCompatActivity {
                 User fullUser = res.getUser();
 
                 if (msg.equalsIgnoreCase("ok")){
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("user", fullUser);
+                    startActivity(intent);
 
                 } else {
                     Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG).show();
