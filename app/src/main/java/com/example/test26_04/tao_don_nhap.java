@@ -2,8 +2,11 @@ package com.example.test26_04;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 import com.example.test26_04.api_controller.productAPI;
 import com.example.test26_04.models.ImportingProduct;
 import com.example.test26_04.models.Product;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -25,6 +29,7 @@ public class tao_don_nhap extends AppCompatActivity {
     Button btnFinish;
     int importingNumber;
     private ArrayList<Product> updatedProductList;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +37,10 @@ public class tao_don_nhap extends AppCompatActivity {
         setContentView(R.layout.activity_tao_don_nhap);
         btnFinish=(Button) findViewById(R.id.btnFinishNhap);
 
+        sp = getSharedPreferences("storage", Context.MODE_PRIVATE);
+
         Intent intent = getIntent();
         Product importingProduct = (Product) intent.getSerializableExtra("importing product");
-
-        System.out.println(importingProduct.getImportPrice());
 
         TextView importingProductName = findViewById(R.id.importing_product_name);
         importingProductName.setText(importingProduct.getName());
@@ -78,12 +83,16 @@ public class tao_don_nhap extends AppCompatActivity {
     }
 
     private void callImportProductAPI(String _id, int importingNumber){
-        System.out.println("product id: " + _id);
-        System.out.println("importing number: " + importingNumber);
         productAPI.apiService.postImportProduct(new ImportingProduct(_id, importingNumber))
                 .enqueue(new Callback<Product>() {
                     @Override
                     public void onResponse(Call<Product> call, Response<Product> response) {
+                        SharedPreferences.Editor editor = sp.edit();
+                        Gson gson = new Gson();
+                        String json = gson.toJson(response.body());
+                        Log.e("IMPORT", json);
+                        editor.putString("import product", json);
+                        editor.commit();
                         Toast.makeText(tao_don_nhap.this, "Successfully imported", Toast.LENGTH_LONG).show();
                     }
 
@@ -95,23 +104,5 @@ public class tao_don_nhap extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        productAPI.apiService.getAllProducts()
-                .enqueue(new Callback<ArrayList<Product>>() {
-                    @Override
-                    public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
-                        updatedProductList = response.body();
-                        Intent intent = new Intent(tao_don_nhap.this, StorageActivity.class);
-                        intent.putExtra("Product list", updatedProductList);
-                        startActivity(intent);
-                    }
 
-                    @Override
-                    public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
-
-                    }
-                });
-    }
 }

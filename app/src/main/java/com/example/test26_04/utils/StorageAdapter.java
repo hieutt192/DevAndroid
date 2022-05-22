@@ -77,6 +77,16 @@ public class StorageAdapter  extends RecyclerView.Adapter<StorageAdapter.Storage
         return 0;
     }
 
+    public void updateProductList(Product product){
+        for(int i=0; i<mListProduct.size(); i++){
+            if (mListProduct.get(i).get_id().equals(product.get_id())){
+                mListProduct.set(i, product);
+                notifyItemChanged(i);
+                break;
+            }
+        }
+    }
+
     public class StorageViewHoler extends RecyclerView.ViewHolder{
 
 
