@@ -1,7 +1,10 @@
 package com.example.test26_04;
 
 import android.annotation.SuppressLint;
+import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,10 +25,12 @@ import com.example.test26_04.models.Order;
 import com.example.test26_04.models.Product;
 import com.example.test26_04.utils.ConfirmedAndCancelledOrderAdapter;
 import com.example.test26_04.utils.OrderAdapter2;
+import com.example.test26_04.utils.OrderItemViewModel;
 import com.example.test26_04.utils.ViewPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -49,6 +54,9 @@ OrderActivity extends AppCompatActivity {
     private OrderAdapter2 pendingOrderAdapter;
     private ConfirmedAndCancelledOrderAdapter confirmedOrderAdapter;
     private ConfirmedAndCancelledOrderAdapter cancelledOrderAdapter;
+    private SharedPreferences sp;
+    private ViewPagerAdapter viewPagerAdapter;
+    private Fragment mFragment;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -60,6 +68,8 @@ OrderActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 
+        mFragment = getFragmentManager().findFragmentByTag("PendingOrdersFragment");
+
         Intent intent = getIntent();
         pendingOrders = (ArrayList<Order>) intent.getSerializableExtra("pendingOrders");
         confirmedOrders = (ArrayList<Order>) intent.getSerializableExtra("confirmedOrders");
@@ -68,7 +78,7 @@ OrderActivity extends AppCompatActivity {
         Log.e("PENDING ORDER", String.valueOf(pendingOrders.size()));
         Log.e("CONFIRMED ORDER", String.valueOf(confirmedOrders.size()));
         Log.e("CANCELLED ORDER", String.valueOf(cancelledOrders.size()));
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, pendingOrders, confirmedOrders, cancelledOrders, getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        viewPagerAdapter = new ViewPagerAdapter(this, pendingOrders, confirmedOrders, cancelledOrders, getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

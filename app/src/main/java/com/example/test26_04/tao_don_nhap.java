@@ -90,10 +90,12 @@ public class tao_don_nhap extends AppCompatActivity {
                         SharedPreferences.Editor editor = sp.edit();
                         Gson gson = new Gson();
                         String json = gson.toJson(response.body());
-                        Log.e("IMPORT", json);
                         editor.putString("import product", json);
                         editor.commit();
                         Toast.makeText(tao_don_nhap.this, "Successfully imported", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(tao_don_nhap.this, StorageActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
                     }
 
                     @Override

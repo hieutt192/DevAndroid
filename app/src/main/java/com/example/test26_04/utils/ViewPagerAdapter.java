@@ -68,5 +68,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         else return "Cancelled";
     }
 
+    public void addCreatedOrder(Order order){
+        pendingOrders.add(order);
+        notifyDataSetChanged();
+    }
+
 
 }

@@ -117,6 +117,11 @@ public class OrderAdapter2 extends RecyclerView.Adapter<OrderAdapter2.OrderViewH
         else return 0;
     }
 
+    public void addCreatedOrder(Order order){
+        pendingOrders.add(order);
+        notifyDataSetChanged();
+    }
+
 
     public class OrderViewHolder extends RecyclerView.ViewHolder {
         private TextView tvCustomerName;

@@ -1,5 +1,6 @@
 package com.example.test26_04.api_controller;
 
+import com.example.test26_04.models.AddOrderResponse;
 import com.example.test26_04.models.Order;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -30,7 +31,7 @@ public interface orderAPI {
             .create(orderAPI.class);
 
     @POST("add-order")
-    Call<String> addOrder(@Body Order order);
+    Call<AddOrderResponse> addOrder(@Body Order order);
 
     @GET("all-pending-orders")
     Call<ArrayList<Order>> getPendingOrders();

@@ -19,17 +19,19 @@ import android.widget.Button;
 import com.example.test26_04.models.Order;
 import com.example.test26_04.utils.OrderAdapter2;
 import com.example.test26_04.utils.OrderItemViewModel;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 
-public class PendingOrdersFragment extends Fragment {
+public class PendingOrdersFragment extends Fragment  {
 
     private RecyclerView rvPendingOrders;
     private ArrayList<Order> pendingOrders;
     private Context context;
     private OrderItemViewModel viewModel;
     private OrderAdapter2 adapter;
+    private OrderActivity mActivity;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +51,7 @@ public class PendingOrdersFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -75,4 +78,6 @@ public class PendingOrdersFragment extends Fragment {
 
         return view;
     }
+
+
 }
